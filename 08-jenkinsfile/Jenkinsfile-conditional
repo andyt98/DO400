@@ -27,14 +27,5 @@ pipeline {
                 }
             }
         }
-        stage('Deploy') {
-            when {
-                expression { env.GIT_BRANCH == 'origin/main' }
-                // For multibranch pipelines, you might use: branch 'main'
-            }
-            steps {
-                echo 'Deploying...'
-            }
-        }
     }
 }
