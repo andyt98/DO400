@@ -1,22 +1,22 @@
 pipeline {
     agent {
-        node {
-            label 'nodejs'
-        }
+        label 'nodejs'
     }
     stages {
-        parallel {
-            stage('Backend Tests') {
-                steps {
-                    dir('08-jenkinsfile/backend') {
-                        sh 'node test.js'
+        stage('Tests') {
+            parallel {
+                stage('Backend Tests') {
+                    steps {
+                        dir('08-jenkinsfile/backend') {
+                            sh 'node test.js'
+                        }
                     }
                 }
-            }
-            stage('Frontend Tests') {
-                steps {
-                    dir('08-jenkinsfile/frontend') {
-                        sh 'node test.js'
+                stage('Frontend Tests') {
+                    steps {
+                        dir('08-jenkinsfile/frontend') {
+                            sh 'node test.js'
+                        }
                     }
                 }
             }
