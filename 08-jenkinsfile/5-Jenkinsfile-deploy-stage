@@ -30,11 +30,7 @@ pipeline {
         stage('Deploy') {
             when {
                 expression { env.GIT_BRANCH == 'origin/main' }
-                beforeInput true
-            }
-            input {
-                message 'Deploy the application?'
-                ok 'Yes, proceed to deploy.'
+                // For multibranch pipelines, you might use: branch 'main'
             }
             steps {
                 echo 'Deploying...'
