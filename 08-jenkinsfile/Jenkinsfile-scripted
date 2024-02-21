@@ -4,9 +4,13 @@ node('nodejs') {
             url: 'https://github.com/andyt98/do400'
     }
     stage('Backend Tests') {
-        sh 'node ./backend/test.js'
+        dir('08-jenkinsfile/backend') {
+            sh 'node test.js'
+        }
     }
     stage('Frontend Tests') {
-        sh 'node ./frontend/test.js'
+        dir('08-jenkinsfile/frontend') {
+            sh 'node test.js'
+        }
     }
 }

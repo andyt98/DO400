@@ -7,12 +7,16 @@ pipeline {
     stages {
         stage('Backend Tests') {
             steps {
-                sh 'node ./backend/test.js'
+                dir('08-jenkinsfile/backend') {
+                    sh 'node test.js'
+                }
             }
         }
         stage('Frontend Tests') {
             steps {
-                sh 'node ./frontend/test.js'
+                dir('08-jenkinsfile/frontend') {
+                    sh 'node test.js'
+                }
             }
         }
     }
